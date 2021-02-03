@@ -1,0 +1,11 @@
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\bin\Debug\netcoreapp2.0\Inheritence.deps.json
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\bin\Debug\netcoreapp2.0\Inheritence.runtimeconfig.json
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\bin\Debug\netcoreapp2.0\Inheritence.runtimeconfig.dev.json
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\bin\Debug\netcoreapp2.0\Inheritence.dll
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\bin\Debug\netcoreapp2.0\Inheritence.pdb
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\obj\Debug\netcoreapp2.0\Inheritence.csproj.CoreCompileInputs.cache
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\obj\Debug\netcoreapp2.0\Inheritence.AssemblyInfoInputs.cache
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\obj\Debug\netcoreapp2.0\Inheritence.AssemblyInfo.cs
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\obj\Debug\netcoreapp2.0\Inheritence.dll
+c:\users\staffan jansson\Source\Repos\Inheritence\Inheritence\obj\Debug\netcoreapp2.0\Inheritence.pdb
+C:\Users\Staffan Jansson\Source\Repos\Inheritence\Inheritence\obj\Debug\netcoreapp2.0\Inheritence.csprojAssemblyReference.cache
