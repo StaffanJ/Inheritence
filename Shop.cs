@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Inheritence
 {
-    class Shop
+    class Shop : Inventory
     {
-        public List<HealingItem> HealingItems { get; set; }
-        public List<DamageItem> DamageItems { get; set; }
+        public List<Inventory> ShoppingCart { get; set; }
 
         public Shop()
         {
             HealingItems = new List<HealingItem>();
             DamageItems = new List<DamageItem>();
+            ShoppingCart = new List<Inventory>();
         }
 
         public void AddHealingItemToShop(HealingItem item)
@@ -24,21 +24,24 @@ namespace Inheritence
             DamageItems.Add(item);
         }
 
-        public void DisplayShopItems()
+        public void DisplayShopItems(Hero hero, Inventory inventory)
         {
+
             Shop shop = new Shop();
 
-            HealingItem item1 = new HealingItem() { Name = "Healing Potion", HealingRestored = 20, Price = 10 };
-            HealingItem item2 = new HealingItem() { Name = "Strong Healing Potion", HealingRestored = 30, Price = 15 };
-            DamageItem item3 = new DamageItem() { Name = "Potion of Weakness", Damage = 20, Price = 10 };
-            DamageItem item4 = new DamageItem() { Name = "Fire Potion", Damage = 20, Price = 10 };
-            DamageItem item5 = new DamageItem() { Name = "Lightning Potion", Damage = 25, Price = 15 };
+            HealingItem item1 = new HealingItem().HealingPotionMethod();
+            HealingItem item2 = new HealingItem().StrongHealingPotionMethod();
+            DamageItem item3 = new DamageItem().PotionOfWeaknessMethod();
+            DamageItem item4 = new DamageItem().FirePotionMethod();
+            DamageItem item5 = new DamageItem().LightningPotionMethod();
 
             shop.AddHealingItemToShop(item1);
             shop.AddHealingItemToShop(item2);
             shop.AddDamageItemToShop(item3);
             shop.AddDamageItemToShop(item4);
             shop.AddDamageItemToShop(item5);
+
+            ShoppingCart.Add(shop);
 
             Console.Clear();
 
@@ -52,7 +55,6 @@ namespace Inheritence
                 Console.WriteLine(string.Format("{0} : {1} - Price: {2}", Counter, item.Name, item.Price));
             }
 
-            Counter = 0;
             Console.WriteLine("\nDamaging items: \n");
 
             foreach (var item in shop.DamageItems)
@@ -61,7 +63,54 @@ namespace Inheritence
                 Console.WriteLine(string.Format("{0} : {1} - Price: {2}", Counter, item.Name, item.Price));
             }
 
+            Console.WriteLine("\nType in the name of the item you want to purchase\n");
+
+            AddToShoppingCart(Console.ReadLine(), hero, inventory);
         }
-        
+
+        public void AddToShoppingCart(string itemName, Hero hero, Inventory inventory)
+        {
+        // Få det att fungera med null, alternativt bryt ut Healing och Damage inserten.
+            try
+            {
+                HealingItem newHealingItem = new HealingItem();
+                DamageItem newDamageItem = new DamageItem();
+
+                foreach (var item in ShoppingCart)
+                {
+                    newHealingItem = item.HealingItems.Find(x => x.Name == itemName);
+                    newDamageItem = item.DamageItems.Find(x => x.Name == itemName);
+                }
+
+                if (newHealingItem?.Name != null && newDamageItem.Name == null)
+                {
+                    Console.WriteLine("You purchased: " + newHealingItem.Name + "\n");
+
+                    inventory.AddHealingItemToInventory(newHealingItem);
+
+                    hero.AddToInventory(inventory);
+                }
+                else
+                {
+                    Console.WriteLine("You purchased: " + newDamageItem.Name + "\n");
+
+                    inventory.AddDamageItemToInventory(newDamageItem);
+
+                    hero.AddToInventory(inventory);
+                }
+
+                Console.ReadKey();
+                //hero.AddToInventory(newItem);
+                inventory.DisplayInventory(hero);
+            }
+            catch (NullReferenceException)
+            {
+                Console.Clear();
+                Console.WriteLine("You seemed to type something that the shop dosen't have. Please type in a correct name.\nPress anykey to purchase again!");
+                Console.ReadKey();
+                DisplayShopItems(hero, inventory);
+            }
+                
+        }
     }
 }

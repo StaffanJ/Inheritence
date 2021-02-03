@@ -27,11 +27,11 @@ namespace Inheritence
         {
             Inventory inventory = new Inventory();
 
-            HealingItem item1 = new HealingItem() { Name = "Healing Potion", HealingRestored = 20 };
-            HealingItem item2 = new HealingItem() { Name = "Strong Healing Potion", HealingRestored = 30 };
-            HealingItem item3 = new HealingItem() { Name = "Strong Healing Potion", HealingRestored = 30 };
-            DamageItem item4 = new DamageItem() { Name = "Potion of Weakness", Damage = 20 };
-            DamageItem item5 = new DamageItem() { Name = "Fire Potion", Damage = 20 };
+            HealingItem item1 = new HealingItem().HealingPotionMethod();
+            HealingItem item2 = new HealingItem().StrongHealingPotionMethod();
+            HealingItem item3 = new HealingItem().StrongHealingPotionMethod();
+            DamageItem item4 = new DamageItem().PotionOfWeaknessMethod();
+            DamageItem item5 = new DamageItem().FirePotionMethod();
 
             inventory.AddHealingItemToInventory(item1);
             inventory.AddHealingItemToInventory(item2);
@@ -48,7 +48,7 @@ namespace Inheritence
             int Counter = 0;
             foreach (var items in hero.Inventory)
             {
-                Console.WriteLine("Healing items: \n");
+                Console.WriteLine("\nHealing items: \n");
                 foreach (var item in items.Value.HealingItems)
                 {
                     Counter++;

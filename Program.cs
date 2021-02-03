@@ -59,7 +59,7 @@ namespace Inheritence
                         case ConsoleKey.S:
 
                             clearConsole();
-                            shop.DisplayShopItems();
+                            shop.DisplayShopItems(hero, inventory);
                             endMessage();
                             break;
 
