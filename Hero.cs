@@ -4,17 +4,9 @@ using System.Text;
 
 namespace Inheritence
 {
-    public class Hero
+    public class Hero : Character
     {
-        public string Name { get; set; }
-        public int Health { get; set; }
-        public int MaxDamage { get; set; }
-        public int MinDamage { get; set; }
-        public double Crit { get; set; }
-        public int Level { get; set; }
-        public int Experience { get; set; }
         public int NextLevelExperience { get; set ; }
-        public Dictionary<int, Inventory> Inventory { get; set; }
         public static int Counter { get; set; }
 
         public Hero(string name)
@@ -25,7 +17,7 @@ namespace Inheritence
             MinDamage = 15;
             Crit = 25.0 / 100.0;
             Level = 1;
-            Experience = 1;
+            Experience = 0;
             NextLevelExperience = 120;
             Inventory = new Dictionary<int, Inventory>();
         }

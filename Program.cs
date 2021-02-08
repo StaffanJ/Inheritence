@@ -19,7 +19,7 @@ namespace Inheritence
             inventory.GenerateStartingItems(hero);
             inventory.DisplayInventory(hero);
 
-            Console.Write("\nPress Y to remove a healing item from inventory \nPress X to remove a damage item from inventory\nPress H to view hero stats\n");
+            gameInfo();
             ConsoleKeyInfo choice = Console.ReadKey();
             int numberInRange = 0;
 
@@ -36,7 +36,6 @@ namespace Inheritence
                             Console.Write("\nType in the healing item number you want to remove ");
                             Int32.TryParse(Console.ReadLine(), out numberInRange);
                             inventory.RemoveHealingItemFromInventory(hero, numberInRange);
-                            endMessage();
                             break;
 
                         case ConsoleKey.X:
@@ -46,21 +45,18 @@ namespace Inheritence
                             Console.Write("\nType in the damage item number you want to remove ");
                             Int32.TryParse(Console.ReadLine(), out numberInRange);
                             inventory.RemoveDamageItemFromInventory(hero, numberInRange);
-                            endMessage();
                             break;
 
                         case ConsoleKey.H:
 
                             clearConsole();
                             hero.DisplayHeroStats();
-                            endMessage();
                             break;
 
                         case ConsoleKey.S:
 
                             clearConsole();
                             shop.DisplayShopItems(hero, inventory);
-                            endMessage();
                             break;
 
                         case ConsoleKey.F:
@@ -75,11 +71,13 @@ namespace Inheritence
                         default:
 
                             clearConsole();
-                            Console.Write("\nPress Y to remove a healing item from inventory \nPress X to remove a damage item from inventory\nPress H to view hero stats\n ");
+                            gameInfo();
                             choice = Console.ReadKey();
                             break;
                     }
-                    Console.Write("\nPress Y to remove a healing item from inventory \nPress X to remove a damage item from inventory\nPress H to view hero stats\nTo end the game press Esc key\n");
+
+                    gameInfo();
+
                     if (endState != 1)
                     {
                         choice = Console.ReadKey();
@@ -89,7 +87,7 @@ namespace Inheritence
                 {
                     Console.Clear();
                     Console.WriteLine("There must be a number, try again");
-                    Console.Write("\nPress Y to remove a healing item from inventory \nOr press X to remove a damage item from inventory\n");
+                    gameInfo();
                     choice = Console.ReadKey();
                 }
 
@@ -100,9 +98,10 @@ namespace Inheritence
                 Console.Clear();
             }
 
-            void endMessage()
+            void gameInfo()
             {
-                Console.Write("\nTo end the game press Esc key\n");
+                Console.Write("\nPress Y to remove a healing item from inventory \nPress X to remove a damage item from inventory\nPress H to view hero stats\nPress S to go to the shop\n" +
+                "Press ESC key to end the game\n");
             }
             
         }

@@ -45,10 +45,11 @@ namespace Inheritence
         public void DisplayInventory(Hero hero)
         {
             Console.Clear();
+            Console.WriteLine("This is your inventory\n");
             int Counter = 0;
             foreach (var items in hero.Inventory)
             {
-                Console.WriteLine("\nHealing items: \n");
+                Console.WriteLine("Healing items: \n");
                 foreach (var item in items.Value.HealingItems)
                 {
                     Counter++;
